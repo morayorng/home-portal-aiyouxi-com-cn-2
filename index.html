@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>爱游戏 · 知识库入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f9fc;
+            color: #1e2c3a;
+            line-height: 1.6;
+            padding: 24px 16px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* 网格卡片系统 */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        @media (min-width: 480px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 22px 18px;
+            box-shadow: 0 4px 12px rgba(0, 40, 60, 0.06);
+            border: 1px solid #dce9f0;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 18px rgba(0, 80, 100, 0.10);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #126b7a;
+        }
+
+        .card-header .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: #deeef5;
+            color: #0b5968;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .card p, .card li {
+            font-size: 0.94rem;
+            color: #2c4050;
+        }
+
+        .card ul, .card ol {
+            padding-left: 20px;
+            margin: 8px 0 4px;
+        }
+
+        .card li {
+            margin-bottom: 6px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #d5ebf2;
+            color: #0a5767;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        /* 标题区 */
+        .hero {
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: 1.9rem;
+            font-weight: 650;
+            letter-spacing: -0.3px;
+            color: #0b4b5a;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .hero .sub {
+            font-size: 0.95rem;
+            color: #3f6273;
+            margin-top: 8px;
+            border-left: 4px solid #2f9eb3;
+            padding-left: 14px;
+            background: #eaf4f8;
+            border-radius: 0 8px 8px 0;
+            padding: 10px 16px;
+        }
+
+        .hero .sub a {
+            color: #0e5f70;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-weight: 500;
+        }
+
+        .hero .sub a:hover {
+            color: #1c8a9e;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .badge-row span {
+            background: #e0f0f6;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            color: #0b5d6d;
+        }
+
+        /* 卡片内链接 */
+        .card a {
+            color: #116f81;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font-weight: 500;
+        }
+
+        .card a:hover {
+            color: #1b96ab;
+        }
+
+        /* 提示区 独立卡片 */
+        .notice-card {
+            background: #ddeff5;
+            border: 1px solid #b3d6e2;
+            border-radius: 16px;
+            padding: 20px 18px;
+            margin: 22px 0 20px;
+        }
+
+        .notice-card .title {
+            font-weight: 600;
+            color: #085260;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .notice-card p {
+            font-size: 0.92rem;
+            color: #1b3d4a;
+        }
+
+        .notice-card .small-link {
+            font-size: 0.88rem;
+        }
+
+        /* FAQ 摘要 */
+        .faq-item {
+            margin-bottom: 14px;
+        }
+
+        .faq-item .q {
+            font-weight: 600;
+            color: #0d5c6b;
+            margin-bottom: 2px;
+        }
+
+        .faq-item .a {
+            font-size: 0.9rem;
+            color: #2c4b58;
+        }
+
+        .faq-item .a a {
+            color: #106a7c;
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #cde0e8;
+            margin: 22px 0 16px;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #688a99;
+            padding: 28px 0 12px;
+            border-top: 1px solid #d0e2eb;
+            margin-top: 20px;
+        }
+
+        /* 移动端细微调整 */
+        @media (max-width: 420px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .card {
+                padding: 18px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- hero -->
+    <div class="hero">
+        <h1>
+            <span>📘</span> 爱游戏 · 知识库
+        </h1>
+        <div class="sub">
+            再次访问无需重复查找 —— 将 <a href="https://home-portal-aiyouxi.com.cn">爱游戏</a> 加入浏览器收藏夹或书签栏，即可从任何设备快速回到信息中心。
+        </div>
+        <div class="badge-row">
+            <span>目录入口</span>
+            <span>持续跟踪</span>
+            <span>精选卡片</span>
+            <span>提示集</span>
+        </div>
+    </div>
+
+    <!-- 网格卡片区 四块 -->
+    <div class="grid">
+        <!-- 卡片 1：平台特点 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="icon">🧩</span> 特点速览
+            </div>
+            <ul>
+                <li>聚合多维度游戏资料与动态</li>
+                <li>版块分类清晰，减少信息过载</li>
+                <li>定期整理常见问题与实用提示</li>
+                <li>轻量目录结构，方便跳转</li>
+            </ul>
+        </div>
+
+        <!-- 卡片 2：适合场景 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="icon">🎯</span> 适用场景
+            </div>
+            <p>快速检索已知内容、查阅之前看过的专题、同步多端收藏夹。无论是日常浏览还是集中研究，<a href="https://home-portal-aiyouxi.com.cn">爱游戏</a> 的目录布局都能降低重复查找成本。</p>
+        </div>
+
+        <!-- 卡片 3：持续关注 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="icon">🔔</span> 关注方式
+            </div>
+            <ol>
+                <li>添加书签 <span class="tag">推荐</span></li>
+                <li>桌面端拖拽标签到书签栏</li>
+                <li>移动端浏览器「添加到主屏幕」</li>
+                <li>定期回来浏览更新</li>
+            </ol>
+        </div>
+
+        <!-- 卡片 4：相关信息 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="icon">📎</span> 相关信息
+            </div>
+            <p>内容覆盖常见分类、索引页与辅助说明。不设置自动跳转，提供稳定入口。若需反馈或建议，可在对应页面留言区提出。</p>
+        </div>
+    </div>
+
+    <!-- 提示区 -->
+    <div class="notice-card">
+        <div class="title">📌 提示 · 让再次访问更高效</div>
+        <p>将 <a href="https://home-portal-aiyouxi.com.cn">爱游戏</a> 设为浏览器书签后，每次访问可直接从书签栏打开，无需搜索或历史记录。移动端用户可添加至主屏幕，获得近似应用图标的快速入口。建议每周或每两周查看一次知识库更新，保持信息同步。</p>
+    </div>
+
+    <!-- FAQ 摘要区 -->
+    <div style="margin: 18px 0 8px;">
+        <h3 style="font-weight: 600; font-size: 1.1rem; color: #0b5465; display: flex; gap: 6px; align-items: center; margin-bottom: 14px;">
+            <span>❓</span> 常见问题摘要
+        </h3>
+        <div class="faq-item">
+            <div class="q">Q：我上次访问的页面找不到了，怎么办？</div>
+            <div class="a">A：可以直接回到 <a href="https://home-portal-aiyouxi.com.cn">爱游戏</a> 首页，使用目录卡片或导航索引定位。如果记得部分关键词，也可利用站内搜索（若有）。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">Q：页面内容会频繁变化吗？</div>
+            <div class="a">A：知识库以增量和优化为主，核心目录结构保持稳定。更新会以卡片或提示形式标记，方便老用户识别。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">Q：是否支持多设备同步书签？</div>
+            <div class="a">A：建议使用浏览器自带同步功能（需登录同一账号）。在任意设备上添加书签后，其他已登录设备均可直接访问 <a href="https://home-portal-aiyouxi.com.cn">爱游戏</a>。</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- 附加说明网格 双栏 -->
+    <div class="grid" style="margin-top: 6px;">
+        <div class="card" style="background: #f1f8fb;">
+            <div class="card-header">
+                <span class="icon">📂</span> 目录说明
+            </div>
+            <p>本知识库按主题划分卡片，每个卡片代表一个入口方向。点击卡片内的文本链接可跳转至对应板块。<a href="https://home-portal-aiyouxi.com.cn">爱游戏</a> 本身作为顶层入口，收藏一次即可。</p>
+        </div>
+        <div class="card" style="background: #f1f8fb;">
+            <div class="card-header">
+                <span class="icon">🔄</span> 持续迭代
+            </div>
+            <p>页面内容会根据用户关注点和信息积累进行适应性调整。如果你发现某些板块缺失或希望增加新分类，请留意页面内提供的反馈渠道（若有）。</p>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        <span>爱游戏 · 知识库入口 · 建议收藏</span>
+    </div>
+</div>
+</body>
+</html>
