@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老哥网 · 简明导航页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8f9fa;
+            color: #212529;
+            font-family: system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page {
+            max-width: 760px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* —— 顶部导航 —— */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #e9ecef;
+            margin-bottom: 2.8rem;
+        }
+
+        .top-nav .brand {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #1e293b;
+            letter-spacing: 0.5px;
+        }
+
+        .top-nav .brand span {
+            color: #4a6cf7;
+        }
+
+        .top-nav .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.6rem;
+            font-size: 0.9rem;
+        }
+
+        .top-nav .nav-links a {
+            color: #495057;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .top-nav .nav-links a:hover {
+            color: #4a6cf7;
+        }
+
+        /* —— hero 区 —— */
+        .hero {
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            color: #111;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #495057;
+            max-width: 600px;
+        }
+
+        /* —— 核心介绍 —— */
+        .intro {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.6rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #eef1f5;
+        }
+
+        .intro p {
+            margin-bottom: 0.6rem;
+        }
+
+        .intro strong {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .intro a {
+            color: #4a6cf7;
+            text-decoration: none;
+            border-bottom: 1px solid #d0d9ff;
+            transition: border-color 0.2s;
+        }
+
+        .intro a:hover {
+            border-bottom-color: #4a6cf7;
+        }
+
+        /* —— 场景模块（三列卡片） —— */
+        .scenes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.8rem 1.5rem 1.6rem;
+            border: 1px solid #eef1f5;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+        }
+
+        .scene-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #1e293b;
+        }
+
+        .scene-card p {
+            font-size: 0.92rem;
+            color: #5a6577;
+            line-height: 1.6;
+        }
+
+        .scene-card .emoji-badge {
+            display: inline-block;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* —— 常见说明 / FAQ 摘要 —— */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #eef1f5;
+            margin-bottom: 2.2rem;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #1e293b;
+        }
+
+        .faq-item {
+            margin-bottom: 0.9rem;
+        }
+
+        .faq-item .q {
+            font-weight: 600;
+            color: #1e293b;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item .a {
+            color: #5a6577;
+            padding-left: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-item .a a {
+            color: #4a6cf7;
+            text-decoration: none;
+            border-bottom: 1px solid #d0d9ff;
+        }
+
+        .faq-item .a a:hover {
+            border-bottom-color: #4a6cf7;
+        }
+
+        /* —— 底部 —— */
+        .footer {
+            border-top: 1px solid #e9ecef;
+            padding-top: 1.8rem;
+            margin-top: auto;
+            font-size: 0.85rem;
+            color: #6c757d;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #4a6cf7;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* —— 响应式 —— */
+        @media (max-width: 680px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .scenes {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .intro, .faq-summary {
+                padding: 1.2rem 1.2rem;
+            }
+
+            .top-nav .nav-links {
+                gap: 1rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <div class="brand"><span>◈</span> 老哥网</div>
+        <ul class="nav-links">
+            <li><a href="#guide">指南</a></li>
+            <li><a href="#scenes">场景</a></li>
+            <li><a href="#faq">说明</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>简洁、直接、按需阅读</h1>
+        <p>关于 <a href="https://m-laoge.com" style="color:#4a6cf7; text-decoration:none; border-bottom:1px solid #d0d9ff;">老哥网</a> 的使用思路与访问提醒，整理成一份轻量参考。</p>
+    </div>
+
+    <!-- 核心介绍 -->
+    <div class="intro" id="guide">
+        <p><strong>老哥网</strong> 是一个以信息整理和内容聚合为方向的站点。如果你希望快速定位自己关注的板块，或者想了解站内内容的分类方式，下面几个要点可以帮你节省时间。</p>
+        <p>建议初次浏览时先熟悉页面顶部的分类入口，这样能更清楚每个区域侧重什么。对于常见问题，可以下拉到页面底部的说明部分；如果遇到临时疑问，也可以返回这里对照。</p>
+        <p>站内信息会持续更新，部分板块的入口位置可能会有微调，以实际页面为准。</p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes" id="scenes">
+        <div class="scene-card">
+            <div class="emoji-badge">📂</div>
+            <h3>快速定位资源</h3>
+            <p>通过导航栏的分类标签，可以直达你感兴趣的内容区域。不需要逐页翻找，适合有明确目标的情况。</p>
+        </div>
+        <div class="scene-card">
+            <div class="emoji-badge">🔍</div>
+            <h3>浏览与发现</h3>
+            <p>如果暂时没有特定目标，可以从首页推荐或最近更新的条目看起，逐步了解站内内容的整体结构。</p>
+        </div>
+        <div class="scene-card">
+            <div class="emoji-badge">📌</div>
+            <h3>查阅常见说明</h3>
+            <p>关于访问、内容分类或使用上的小疑问，大多数都能在 FAQ 部分找到对应解答，节省反复询问的时间。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <div class="faq-summary" id="faq">
+        <h2>访问与使用 · 简要说明</h2>
+
+        <div class="faq-item">
+            <span class="q">Q：如何快速找到我上次看的内容？</span>
+            <span class="a">目前站内没有单独的历史记录模块，建议使用浏览器自带的书签或历史功能来标记。</span>
+        </div>
+
+        <div class="faq-item">
+            <span class="q">Q：页面打不开或加载慢怎么办？</span>
+            <span class="a">可以先检查本地网络，或稍后再试。如果持续无法访问，可以参考<a href="https://m-laoge.com">老哥网</a>页脚的提示信息。</span>
+        </div>
+
+        <div class="faq-item">
+            <span class="q">Q：内容多久更新一次？</span>
+            <span class="a">更新频率不固定，重要板块会较快同步。建议每隔几天回来看看，首页会显示最近更新的条目。</span>
+        </div>
+
+        <div class="faq-item" style="margin-bottom:0;">
+            <span class="q">Q：移动端浏览体验如何？</span>
+            <span class="a">页面针对手机屏幕做了自适应，使用竖屏浏览效果更佳。部分表格或列表在横屏下显示会更完整。</span>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        <p>内容整理自 <a href="https://m-laoge.com">老哥网</a> · 简明指南 · 仅供浏览参考</p>
+    </div>
+
+</div>
+</body>
+</html>
