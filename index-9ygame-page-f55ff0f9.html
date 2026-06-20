@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2">
+  <title>九游 · 简明指南与访问提醒</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f8f9fa;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #1e2024;
+      padding: 2rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 680px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+      padding: 2.4rem 2rem;
+      transition: all 0.2s ease;
+    }
+
+    @media (max-width: 520px) {
+      body {
+        padding: 1rem 0.6rem;
+      }
+      .page {
+        padding: 1.8rem 1.2rem;
+        border-radius: 24px;
+      }
+    }
+
+    /* hero 横幅 —— 极简留白，只用文字与间距 */
+    .hero {
+      margin-bottom: 3.2rem;
+      border-bottom: 1px solid #e9ecef;
+      padding-bottom: 2rem;
+    }
+
+    .hero__label {
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #868e96;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 580;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: #121416;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .subhead {
+      font-size: 1.1rem;
+      color: #495057;
+      font-weight: 380;
+      max-width: 85%;
+    }
+
+    /* 段落区域 */
+    section {
+      margin-bottom: 2.8rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 540;
+      letter-spacing: -0.008em;
+      color: #1a1d21;
+      margin-bottom: 0.9rem;
+      border-left: 3px solid #b0b8c1;
+      padding-left: 1rem;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      font-weight: 380;
+      color: #2b2f36;
+    }
+
+    .quiet-callout {
+      background: #f1f3f5;
+      padding: 1.5rem 1.6rem;
+      border-radius: 20px;
+      margin: 2rem 0 1.2rem 0;
+    }
+
+    .quiet-callout p {
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
+    }
+
+    .quiet-callout a {
+      font-weight: 480;
+    }
+
+    a {
+      color: #1c6f9c;
+      text-decoration: none;
+      border-bottom: 1px dotted #b6cfde;
+      transition: border-bottom 0.15s, color 0.15s;
+    }
+
+    a:hover {
+      color: #0b4b6e;
+      border-bottom: 1px solid #1c6f9c;
+    }
+
+    /* 特征卡片 (极简) */
+    .feature-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+      margin: 1.8rem 0 1.2rem;
+    }
+
+    .feature-item {
+      border-left: 1px solid #dee2e6;
+      padding-left: 1.1rem;
+    }
+
+    .feature-item .feat-title {
+      font-weight: 550;
+      font-size: 1.1rem;
+      color: #1a1d21;
+      margin-bottom: 0.3rem;
+    }
+
+    .feature-item p {
+      font-size: 0.95rem;
+      color: #3e434a;
+      margin-bottom: 0.1rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e9ecef;
+      margin: 2.4rem 0 1.8rem;
+    }
+
+    /* FAQ 摘要，只保留非常克制的问与答 */
+    .faq-mini {
+      margin: 1.6rem 0 0.8rem;
+    }
+
+    .faq-q {
+      font-weight: 470;
+      margin-bottom: 0.25rem;
+      color: #1c2126;
+    }
+
+    .faq-a {
+      font-size: 0.95rem;
+      color: #4a5059;
+      padding-left: 0.3rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-note {
+      border-top: 1px solid #e9ecef;
+      padding-top: 1.8rem;
+      margin-top: 2.4rem;
+      font-size: 0.9rem;
+      color: #6b727c;
+      text-align: left;
+    }
+
+    .footer-note span {
+      display: inline-block;
+      margin-right: 0.6rem;
+      background: #f1f3f5;
+      padding: 0.1rem 0.5rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: #4c535e;
+    }
+
+    .fine-print {
+      font-size: 0.8rem;
+      color: #8b929e;
+      margin-top: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 横幅：不设图片，仅文字与留白 -->
+  <div class="hero">
+    <div class="hero__label">杂志专题 · 简明指南</div>
+    <h1>九游<br>访问与使用提醒</h1>
+    <div class="subhead">一份轻量叙述，帮助新使用者快速理解背景与路径。</div>
+  </div>
+
+  <!-- 第一段：背景说明 -->
+  <section>
+    <h2>从玩家到聚合</h2>
+    <p>许多人第一次听说「九游」是在寻找手机游戏或社区的时候。事实上它并不是一个简单的游戏库，而更像一个围绕移动娱乐的内容聚合地——玩家在这里发现新作品、浏览测评、参与讨论，偶尔也寻找攻略或同好。由于服务长期保持更新，界面与功能会随时间微调，因此偶尔的访问提醒并非多余。</p>
+    <p>对刚接触的用户而言，先理解其基本定位比直接下载更有帮助。下面我们从几个侧面展开介绍。</p>
+  </section>
+
+  <!-- 第二段：特点与场景 (自然融入链接) -->
+  <section>
+    <h2>使用角度</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feat-title">信息与发现</div>
+        <p>比起纯商店式的列表，九游内置了编辑推荐、玩家评分与简短评论，帮助你在下载前对一款游戏形成基本印象。部分内容由社区用户贡献，阅读时留意日期与版本会更有效。</p>
+      </div>
+      <div class="feature-item">
+        <div class="feat-title">账号与漫游</div>
+        <p>平台账号通常与多个游戏进度绑定，但并非所有游戏都自动同步。登录后建议先确认绑定状态，尤其当更换设备或重装时。如果你经常在不同手机之间切换，这一步尤其值得留意。</p>
+      </div>
+      <div class="feature-item">
+        <div class="feat-title">直接访问地址</div>
+        <p>最稳妥的方式始终是使用官方页面：<a href="https://index-9ygame.com">九游</a>。浏览器直接打开，不需要额外搜索或跳转。页面加载后可以检查一下网址栏，确保地址正确。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 第三段：简明提示 + 类似 FAQ 摘要 -->
+  <section>
+    <h2>几个常见提醒</h2>
+    <p>以下问题经常被新用户提及，我们以极简问答形式整理，不展开评价，只陈述事实。</p>
+
+    <div class="faq-mini">
+      <div class="faq-q">—— 是否需要注册才能使用？</div>
+      <div class="faq-a">浏览内容、查看游戏详情通常不需要登录。但下载部分游戏、参与评论或使用云存档功能时，平台会提示创建或登录账号。具体以页面显示为准。</div>
+
+      <div class="faq-q">—— 有些游戏为什么显示“仅限特定区域”？</div>
+      <div class="faq-a">部分游戏因版权或运营安排，仅对特定地区的用户开放。如果你遇到此类提示，通常与当前网络环境有关，而非平台限制。可尝试通过官方渠道确认覆盖范围。</div>
+
+      <div class="faq-q">—— 如何确认版本是最新的？</div>
+      <div class="faq-a">直接访问 <a href="https://index-9ygame.com">九游</a> 即可自动加载最新版前端。如果遇到布局错乱或功能异常，清除浏览器缓存通常能解决大多数问题。</div>
+    </div>
+  </section>
+
+  <!-- 提示段落 (natural) -->
+  <div class="quiet-callout">
+    <p><strong>一点叙述</strong> · 从最初的内容聚合到现在的界面，九游保持着一种不算张扬但足够实用的气质。对普通玩家来说，它是一个称职的起点；如果你偏爱简洁的探索方式，不妨花十分钟浏览结构，会比想象中更直观。</p>
+    <p style="margin-top: 0.4rem; font-size: 0.9rem;">如果你还没打开过，现在可以试试：<a href="https://index-9ygame.com">九游</a>。</p>
+  </div>
+
+  <!-- 页尾访问提示 -->
+  <div class="footer-note">
+    <span>▎访问提醒</span> 始终使用上方链接进入，避免通过第三方镜像或非官方入口访问。如果页面加载缓慢，可稍后再试。
+    <div class="fine-print">
+      本文档仅作介绍与提醒之用，不构成任何担保或诱导。内容基于公开信息与普遍体验编写，具体情况以实际页面为准。
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
